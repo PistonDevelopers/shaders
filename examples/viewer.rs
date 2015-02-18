@@ -86,7 +86,7 @@ impl App {
 
 fn start() {
     let mut app = App::new();
-    app.load_asset("./assets/teapot.obj");
+    app.load_asset("./assets/red-cube.obj");
 
     for e in start_piston::events() {
 

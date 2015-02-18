@@ -1,5 +1,6 @@
 # OBJ file created by ply_to_obj.c
 #
+mtllib foo.mtl
 g Object001
 
 v  40.6266  28.3457  -1.10804
