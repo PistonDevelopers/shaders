@@ -30,3 +30,12 @@ git = "https://github.com/pistondevelopers/shader_version"
 
 [dev-dependencies.wavefront_obj]
 git = "https://github.com/pistondevelopers/wavefront_obj"
+
+[dev-dependencies.piston3d-cam]
+git = "https://github.com/PistonDevelopers/cam"
+
+[dev-dependencies.gfx_macros]
+git = "https://github.com/gfx-rs/gfx-rs"
+
+[dev-dependencies.gfx]
+git = "https://github.com/gfx-rs/gfx-rs"
