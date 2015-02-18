@@ -15,3 +15,16 @@ homepage = "https://github.com/PistonDevelopers/shaders"
 name = "shaders"
 path = "src/lib.rs"
 
+[dev-dependencies.geometry]
+git = "https://github.com/pistondevelopers/geometry"
+
+[dev-dependencies.start_piston]
+git = "https://github.com/bvssvni/start_piston"
+features = ["include_gfx_sdl2"]
+
+[dev-dependencies.piston]
+git = "https://github.com/pistondevelopers/piston"
+
+[dev-dependencies.shader_version]
+git = "https://github.com/pistondevelopers/shader_version"
+
