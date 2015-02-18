@@ -28,3 +28,5 @@ git = "https://github.com/pistondevelopers/piston"
 [dev-dependencies.shader_version]
 git = "https://github.com/pistondevelopers/shader_version"
 
+[dev-dependencies.wavefront_obj]
+git = "https://github.com/pistondevelopers/wavefront_obj"
