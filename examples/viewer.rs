@@ -1,10 +1,9 @@
-#![feature(io, path)]
 #![feature(plugin)]
+#![feature(custom_attribute)]
 #![plugin(gfx_macros)]
 
 extern crate geometry;
 extern crate start_piston;
-#[macro_use]
 extern crate piston;
 extern crate shader_version;
 extern crate wavefront_obj;
@@ -12,18 +11,20 @@ extern crate cam;
 extern crate gfx;
 
 use std::default::Default;
-use piston::quack::{ Get, Action };
+use std::path::Path;
+use piston::window::{ WindowSettings, Size };
 
 fn main() {
     start_piston::start(
         shader_version::OpenGL::_3_2,
-        piston::window::WindowSettings {
-            title: "Piston-Shaders Demo: Viewer".to_string(),
-            size: [640, 480],
-            samples: 0,
-            fullscreen: false,
-            exit_on_esc: true
-        },
+        WindowSettings::new(
+            "Piston-Shaders Demo: Viewer".to_string(),
+            Size { width: 640, height: 480 }
+        )
+        .samples(0)
+        .fullscreen(false)
+        .exit_on_esc(true)
+        ,
         || start()
     );
 }
@@ -45,14 +46,10 @@ impl Default for Vertex {
     }
 }
 
-quack! {
-    obj: Vertex[]
-    get:
-    set:
-        fn (val: geometry::Position) [] { obj.pos = val.0 }
-        fn (val: geometry::TextureCoords) [] { obj.uv = val.0 }
-        fn (val: geometry::Normal) [] { obj.normal = val.0 }
-    action:
+impl geometry::Vertex for Vertex {
+    fn set_position(&mut self, value: [f32; 3]) { self.pos = value }
+    fn set_texture_coords(&mut self, value: [f32; 2]) { self.uv = value }
+    fn set_normal(&mut self, value: [f32; 3]) { self.normal = value }
 }
 
 pub struct App {
@@ -82,11 +79,13 @@ impl App {
     }
 
     fn load_asset(&mut self, asset: &str) {
-        use std::old_io::File;
+        use std::fs::File;
+        use std::io::Read;
 
-        let txt = File::open(&Path::new(asset)).unwrap().read_to_string().unwrap();
+        let mut txt = String::new();
+        File::open(&Path::new(asset)).unwrap().read_to_string(&mut txt).unwrap();
         let obj_set = wavefront_obj::obj::parse(txt).unwrap();
-        self.models.action(geometry::Model::add_model(
+        self.models.add_range(geometry::Model::new_model(
             &obj_set,
             &mut self.vertices,
             &mut self.indices,
@@ -98,10 +97,14 @@ impl App {
 
 
 fn start() {
-    use piston::window::Size;
+    use piston::window::Window;
 
-    let Size(size) = start_piston::current_window().get();
-    let mut app = App::new(size);
+    let mut app = {
+        let window = start_piston::current_window();
+        let window = window.borrow();
+        let size = window.size();
+        App::new([size.width, size.height])
+    };
     app.load_asset("./assets/red-cube.obj");
 
     for e in start_piston::events() {
