@@ -1,6 +1,6 @@
 [package]
 
-name = "shaders"
+name = "piston-shaders"
 version = "0.0.0"
 authors = ["bvssvni <bvssvni@gmail.com>"]
 keywords = ["shaders", "3D", "piston"]
@@ -15,27 +15,6 @@ homepage = "https://github.com/PistonDevelopers/shaders"
 name = "shaders"
 path = "src/lib.rs"
 
-[dev-dependencies.geometry]
-git = "https://github.com/pistondevelopers/geometry"
-
-[dev-dependencies.start_piston]
-git = "https://github.com/bvssvni/start_piston"
-features = ["include_gfx_sdl2"]
-
-[dev-dependencies.piston]
-git = "https://github.com/pistondevelopers/piston"
-
-[dev-dependencies.shader_version]
-git = "https://github.com/pistondevelopers/shader_version"
-
-[dev-dependencies.wavefront_obj]
-git = "https://github.com/pistondevelopers/wavefront_obj"
-
-[dev-dependencies.piston3d-cam]
-git = "https://github.com/PistonDevelopers/cam"
-
-[dev-dependencies.gfx_macros]
-git = "https://github.com/gfx-rs/gfx_macros"
-
-[dev-dependencies.gfx]
-git = "https://github.com/gfx-rs/gfx-rs"
+[dependencies.piston-shaders_graphics2d]
+path = "graphics2d"
+#version = "0.0.0"
