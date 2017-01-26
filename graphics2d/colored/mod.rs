@@ -9,3 +9,13 @@ pub const VERTEX_GLSL_150_CORE: &'static [u8] = include_bytes!("150_core.glslv")
 pub const FRAGMENT_GLSL_120: &'static [u8] = include_bytes!("120.glslf");
 /// Fragmentshader for GLSL 1.50
 pub const FRAGMENT_GLSL_150_CORE: &'static [u8] = include_bytes!("150_core.glslf");
+
+/// Vertex shader for GLSL 1.20 WebGL
+pub const VERTEX_GLSL_120_WEBGL: &'static [u8] = include_bytes!("120_webgl.glslv");
+/// Vertex shader for GLSL 1.50 WebGL
+pub const VERTEX_GLSL_150_CORE_WEBGL: &'static [u8] = include_bytes!("150_core_webgl.glslv");
+
+/// Fragment shader for GLSL 1.20 WebGL
+pub const FRAGMENT_GLSL_120_WEBGL: &'static [u8] = include_bytes!("120_webgl.glslf");
+/// Fragmentshader for GLSL 1.50 WebGL
+pub const FRAGMENT_GLSL_150_CORE_WEBGL: &'static [u8] = include_bytes!("150_core_webgl.glslf");
