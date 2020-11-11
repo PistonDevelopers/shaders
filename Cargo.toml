@@ -1,7 +1,7 @@
 [package]
 
 name = "piston-shaders"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["bvssvni <bvssvni@gmail.com>"]
 keywords = ["shaders", "3D", "piston"]
 description = "Shaders for game development in Rust"
@@ -17,4 +17,4 @@ path = "src/lib.rs"
 
 [dependencies.piston-shaders_graphics2d]
 path = "graphics2d"
-version = "0.3.1"
+version = "0.4.0"
